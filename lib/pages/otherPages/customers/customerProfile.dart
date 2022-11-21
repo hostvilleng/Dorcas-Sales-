@@ -258,9 +258,9 @@ class _CustomerProfileState extends State<CustomerProfile> {
                             height: 20,
                           ),
 
-                          Align(
-                            alignment: Alignment.center,
-                            child: CommonDropDown(options: ['hi', 'lncd', 'scds'], currentValue: 'hi', onChanged: (){})),
+                          //Align(
+                            //alignment: Alignment.center,
+                           // child: CommonDropDown(options: ['hi', 'lncd', 'scds'], currentValue: 'hi', onChanged: (){})),
 
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,

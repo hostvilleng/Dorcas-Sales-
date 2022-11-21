@@ -409,13 +409,7 @@ class _AddProductState extends State<AddProduct> {
                                 alignment: Alignment.center,
                                 child: GestureDetector(
                                   onTap: () async{
-                                    if (_invoiceTitleController.text.isNotEmpty &&
-                                        _invoiceDescriptionController
-                                            .text.isNotEmpty &&
-                                        _currencyController.text.isNotEmpty &&
-                                        _totalAmountController.text.isNotEmpty &&
-                                        _invoiceDueDateController.text.isNotEmpty &&
-                                        _productNameController.text.isNotEmpty &&
+                                    if (_productNameController.text.isNotEmpty &&
                                         _saleCurrencyController.text.isNotEmpty &&
                                         _productPriceController.text.isNotEmpty &&
                                         _productDescriptionController
@@ -480,37 +474,27 @@ class _AddProductState extends State<AddProduct> {
                                           Order(
                                               product: productData,
 
-                                              invoiceTitle: _invoiceTitleController.text,
-                                              invoiceDescription: _invoiceDescriptionController.text,
-                                              currency: _saleCurrencyController.text,
-                                              amountOrdered: int.parse(_totalAmountController.text),
+                                              //invoiceTitle: _invoiceTitleController.text,
+                                             // invoiceDescription: _invoiceDescriptionController.text,
+                                             // currency: _saleCurrencyController.text,
+                                             // amountOrdered: int.parse(_totalAmountController.text),
 
 
                                               paidFor: false)
                                       );
 
-                                      invoices.add(mainOrderJsonDataToOrderModel(orderJsonData));
+                                      //invoices.add(mainOrderJsonDataToOrderModel(orderJsonData));
 
                                       //widget
                                       // .refreshOrdersPage(); //so the new order will show on the orders page
 
                                       //snacks
-                                      showSnackLong(context,
-                                          'Order Added Successfully', false);
+                                      //showSnackLong(context,
+                                         // 'Order Added Successfully', false);
 
 
 
                                       //clear the data
-                                      _invoiceTitleController.clear();
-
-                                      _invoiceDescriptionController.clear();
-
-                                      _currencyController.clear();
-
-                                      _totalAmountController.clear();
-
-                                      _invoiceDueDateController.clear();
-
                                      // invoiceDueDate = DateTime.now();
 
 
@@ -536,11 +520,7 @@ class _AddProductState extends State<AddProduct> {
                                       showSnackLong(context,
                                           'Please fill out all forms', true);
 
-                                      print(_invoiceTitleController.text);
-                                      print(_invoiceDescriptionController.text);
-                                      print(_currencyController.text);
-                                      print(_totalAmountController.text);
-                                      print(_invoiceDueDateController.text);
+
                                       print(_productNameController.text);
                                       print(_saleCurrencyController.text);
                                       print(_productPriceController.text);

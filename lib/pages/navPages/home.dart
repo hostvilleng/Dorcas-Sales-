@@ -107,113 +107,115 @@ class _HomePageState extends State<HomePage> {
                      scrollDirection: Axis.horizontal,
                      pageSnapping: true,
                      children: <Widget> [
+
                        Row(
                          children: [
                            Container(
                              width:350,
-                             margin: EdgeInsets.only(top: 7 ),
+                             margin: EdgeInsets.only(top: 20),
                              padding: EdgeInsets.all(30),
                              decoration: BoxDecoration(
                                  color: Colors.black,
                                  borderRadius: BorderRadius.circular(10)),
-                     child: InkWell(
-                       onTap: (){
-                         //
-                         Navigator.push(context,
-                             MaterialPageRoute(builder: (context) => Sales()));
-                       },
 
-                             child: Column(
-                               mainAxisAlignment: MainAxisAlignment.center,
-                               crossAxisAlignment: CrossAxisAlignment.start,
-                               children: [
-                                 Row(
-                                   children: [
-                                     Text(
-                                       "Total Order",
-                                       style: TextStyle(
-                                           color: Colors.white,
-                                           fontWeight: FontWeight.w600,
-                                           fontSize: 17),
-                                     ),
-                                     Spacer(),
-                                     Popup(
-                                       menuList:
-                                     [
-                                       PopupMenuItem(child: TextButton(
-                                         child: Text("All Order",
-                                           style: TextStyle(color: Colors.black,
-                                               fontSize: 15),
-                                         ),
-                                         onPressed: () {
-                                           Navigator.push(context,
-                                               MaterialPageRoute(builder: (context) => ManageOrders()));
-                                         },
+                             child: InkWell(
+                               onTap: (){
+                                 //
+                                 Navigator.push(context,
+                                     MaterialPageRoute(builder: (context) => ManageOrders()));
+                               },
 
+
+                               child: Column(
+                                 mainAxisAlignment: MainAxisAlignment.center,
+                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                 children: [
+                                   Row(
+                                     children: [
+                                       Text(
+                                         "Total Order",
+                                         style: TextStyle(
+                                             color: Colors.white,
+                                             fontWeight: FontWeight.w600,
+                                             fontSize: 17),
                                        ),
-                                       ),
-                                       PopupMenuItem(child: TextButton(
-                                         child: Text("Pending Order",
-                                           style: TextStyle(color: Colors.black,
-                                               fontSize: 15),
-                                         ),
-                                         onPressed: () {
-                                           Navigator.push(context,
-                                               MaterialPageRoute(builder: (context) => ManageOrders()));
-                                         },
+                                       Spacer(),
+                                       Popup(
+                                         menuList:
+                                         [
+                                           PopupMenuItem(child: TextButton(
+                                             child: Text("All Order ",
+                                               style: TextStyle(color: Colors.black,
+                                                   fontSize: 15),
+                                             ),
+                                             onPressed: () {
+                                               Navigator.push(context,
+                                                   MaterialPageRoute(builder: (context) => ManageOrders()));
+                                             },
 
-                                       ),
-                                       ),
+                                           ),
+                                           ),
 
-                                       PopupMenuItem(child: TextButton(
-                                         child: Text("Completed Order",
-                                           style: TextStyle(color: Colors.black,
-                                               fontSize: 15),
-                                         ),
-                                         onPressed: () {
-                                           Navigator.push(context,
-                                               MaterialPageRoute(builder: (context) =>  ManageOrders()));
-                                         },
+                                           PopupMenuItem(child: TextButton(
+                                             child: Text("Pending Order",
+                                               style: TextStyle(color: Colors.black,
+                                                   fontSize: 15),
+                                             ),
+                                             onPressed: () {
+                                               Navigator.push(context,
+                                                   MaterialPageRoute(builder: (context) =>  ManageOrders()));
+                                             },
 
-                                       ),
-                                       ),
+                                           ),
+                                           ),
 
-                                     ],icon: Icon(FontAwesomeIcons.chevronDown,
-                                       size: 24,
-                                       color: Colors.white,),),
+                                           PopupMenuItem(child: TextButton(
+                                             child: Text("Completed Order",
+                                               style: TextStyle(color: Colors.black,
+                                                   fontSize: 15),
+                                             ),
+                                             onPressed: () {
+                                               Navigator.push(context,
+                                                   MaterialPageRoute(builder: (context) =>  AddProductCategory()));
+                                             },
 
+                                           ),
+                                           ),
 
+                                         ],icon: Icon(FontAwesomeIcons.chevronDown,
+                                         size: 24,
+                                         color: Colors.white,),),
 
-                                   ],
-                                 ),
-                                 SizedBox(
-                                   height: 20,
-                                 ),
-                                 Row(
-                                   children: [
-
-                                     Text(
-                                       '${currentuser.company.orderCount}',
-                                       style: TextStyle(fontSize: 20, color: Colors.white),
-                                     )
-                                   ],
-                                 ),
-                                 Container(
-                                   padding: EdgeInsets.all(10),
-                                   margin: EdgeInsets.only(top: 20),
-                                   decoration: BoxDecoration(
-                                       color: Colors.white,
-                                       borderRadius: BorderRadius.circular(50)),
-                                   child: Text(
-                                     "+10% since last month",
-                                     style: TextStyle(color: Colors.black, fontSize: 10),
+                                     ],
                                    ),
-                                 ),
-                               ],
+                                   SizedBox(
+                                     height: 20,
+                                   ),
+                                   Row(
+                                     children: [
+
+
+                                       Text(
+                                         '${currentuser.company.orderCount}',
+                                         style: TextStyle(fontSize: 20, color: Colors.white),
+                                       )
+                                     ],
+                                   ),
+                                   Container(
+                                     padding: EdgeInsets.all(10),
+                                     margin: EdgeInsets.only(top: 20),
+                                     decoration: BoxDecoration(
+                                         color: Colors.white,
+                                         borderRadius: BorderRadius.circular(50)),
+                                     child: Text(
+                                       "+10% since last month",
+                                       style: TextStyle(color: Colors.black, fontSize: 10),
+                                     ),
+                                   ),
+                                 ],
+                               ),
                              ),
                            ),
-                           ),
-
                          ],
                        ),
 
@@ -676,12 +678,14 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: const EdgeInsets.only(left: 8, right: 8,),
                   child: Container(
-                    padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.only(top: 5, bottom: 2, right: 20, left: 20),
                     height: 70,
                     decoration: BoxDecoration(
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(10)
                     ),
+
+
 
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -718,7 +722,7 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: const EdgeInsets.only(left: 8, right: 8,),
                   child: Container(
-                    padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.only(top: 5, bottom: 2, right: 20, left: 20),
                     height: 70,
                     decoration: BoxDecoration(
 

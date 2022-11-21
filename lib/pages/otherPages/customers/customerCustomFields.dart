@@ -32,7 +32,7 @@ class _CustomCustomerFieldState extends State<CustomCustomerField> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('Custom Fields',
+                      child: Text(' Create a Customer Group ',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -44,7 +44,7 @@ class _CustomCustomerFieldState extends State<CustomCustomerField> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30.0,right: 30),
-                  child: Text('You can add custom fields to help customize the details you collect from customers',
+                  child: Text('You can add Customers to any selected group',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 13,
@@ -87,7 +87,7 @@ class _CustomCustomerFieldState extends State<CustomCustomerField> {
                               ),
                               //filled: true,
                               //    fillColor: Colors.grey.shade200,
-                              hintText: "Custom Field Name:",
+                              hintText: "Create group:",
                               contentPadding: EdgeInsets.symmetric(
                                 horizontal: 10,
                                 vertical: 5,
@@ -111,10 +111,10 @@ class _CustomCustomerFieldState extends State<CustomCustomerField> {
 
                         //common space
 
-                        CommonText(
-                          text: 'Custom Field Name:',
-                          size: 17,
-                        ),
+                       // CommonText(
+                         // text: 'Custom Field Name:',
+                         // size: 17,
+                     //   ),
                         SizedBox(height: 20),
 
                         Column(
@@ -127,7 +127,7 @@ class _CustomCustomerFieldState extends State<CustomCustomerField> {
                         ), //common space
 
                         CommonText(
-                          text: 'Select Customer to add to this Category:',
+                          text: 'Select Customers to this the group:',
                           size: 17,
                         ),
                         SizedBox(height: 20),
@@ -178,7 +178,7 @@ class _CustomCustomerFieldState extends State<CustomCustomerField> {
                                   _customFieldNameController.clear();
                                   selectedCategoryCustomers = [];
 
-                                  showSnackLong(context, 'Customer Custom Added', false);
+                                  showSnackLong(context, 'Customer Added', false);
                                   Navigator.pop(context);
 
 
@@ -193,7 +193,7 @@ class _CustomCustomerFieldState extends State<CustomCustomerField> {
 
                               },
                               child: CommonTextButtonBig(
-                                  text: 'Add Custom Field', textSize: 17),
+                                  text: 'Submit', textSize: 17),
                             )),
 
                         SizedBox(

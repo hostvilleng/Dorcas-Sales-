@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'AWalkThroughScreen.dart';
 
 class ASplashScreen extends StatefulWidget {
@@ -15,6 +16,12 @@ class _ASplashScreenState extends State<ASplashScreen> {
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AWalkThroughScreen()));
     });
+  }
+
+  storeASplashScreenInfo()async{
+    int isViewed = 0;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('ASplashScreen', isViewed);
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'package:dorcashub/general/allExports.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../jsonToModels/customer.dart';
 
@@ -23,34 +24,38 @@ class _AddCustomerState extends State<AddCustomer> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 40, 10, 0),
+            padding: const EdgeInsets.fromLTRB(20, 60, 10, 0),
             child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back,
-                          size: 24,
-                          color: Colors.black,
-                        )),
-
-                    SizedBox(
-                      height: 20,
-                    ), //common space
-
-                    CommonText(
-                      text: 'Add Customer',
-                      size: 24,
-                      color: AppColors().black,
-                      bold: true,
+                    Row(
+                      children: [
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Icon(
+                              Icons.arrow_back_ios,
+                              size: 24,
+                              color: Colors.black,
+                            )),
+                        SizedBox(
+                          width: 110,
+                        ),
+                        Text(
+                          "Add Customer",
+                          style: GoogleFonts.inter(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
                     ),
 
-                    SizedBox(height: 20),
+                    SizedBox(height: 40),
 
                     //data form
 
@@ -60,57 +65,120 @@ class _AddCustomerState extends State<AddCustomer> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CommonText(
-                              text: 'FirstName:',
-                              size: 17,
+
+                            TextFormField(
+                              validator: (value) {
+                                if ( _firstNameController.text.isEmpty) {
+                                  return "This field can't be empty";
+                                } else {
+                                  return null;
+                                }
+                              },
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                //hintText: "Short Description:",
+                                labelText: 'Firstname:',
+                                labelStyle:
+                                TextStyle(fontSize: 12, color: Colors.black),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(13)),
+                              ),
+
+                              // minLines: null,
+                              //maxLines: null,
+                              // If this is null, there is no limit to the number of lines, and the text container will start with enough vertical space for one line and automatically grow to accommodate additional lines as they are entered.
+                              //expands:
+                              //true, // If
+                              controller:  _firstNameController,
                             ),
-                            SizedBox(height: 12),
-                            CommonTextFieldSmall(
-                              controller: _firstNameController,
-                              hintText: 'John',
+                            SizedBox(
+                              height: 10,
                             ),
+
+                            TextFormField(
+                              validator: (value) {
+                                if ( _lastNameController.text.isEmpty) {
+                                  return "This field can't be empty";
+                                } else {
+                                  return null;
+                                }
+                              },
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                //hintText: "Short Description:",
+                                labelText: 'Lastname:',
+                                labelStyle:
+                                TextStyle(fontSize: 12, color: Colors.black),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(13)),
+                              ),
+
+                              // minLines: null,
+                              //maxLines: null,
+                              // If this is null, there is no limit to the number of lines, and the text container will start with enough vertical space for one line and automatically grow to accommodate additional lines as they are entered.
+                              //expands:
+                              //true, // If
+                              controller:  _lastNameController,
+                            ),//common space
 
                             SizedBox(
-                              height: 20,
-                            ), //common space
+                              height: 10,
+                            ),
+                            TextFormField(
+                              validator: (value) {
+                                if ( _emailController.text.isEmpty) {
+                                  return "This field can't be empty";
+                                } else {
+                                  return null;
+                                }
+                              },
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                //hintText: "Short Description:",
+                                labelText: 'Email:',
+                                labelStyle:
+                                TextStyle(fontSize: 12, color: Colors.black),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(13)),
+                              ),
 
-                            CommonText(
-                              text: 'LastName:',
-                              size: 17,
-                            ),
-                            SizedBox(height: 12),
-                            CommonTextFieldSmall(
-                              controller: _lastNameController,
-                              hintText: 'Doe',
-                            ),
+                              // minLines: null,
+                              //maxLines: null,
+                              // If this is null, there is no limit to the number of lines, and the text container will start with enough vertical space for one line and automatically grow to accommodate additional lines as they are entered.
+                              //expands:
+                              //true, // If
+                              controller:  _emailController,
+                            ),//common space
 
                             SizedBox(
-                              height: 20,
-                            ), //common space
-
-                            CommonText(
-                              text: 'Email:',
-                              size: 17,
-                            ),
-                            SizedBox(height: 12),
-                            CommonTextFieldSmall(
-                              controller: _emailController,
-                              hintText: 'johndoe@gmail.com',
+                              height: 10,
                             ),
 
-                            SizedBox(
-                              height: 20,
-                            ), //common space
+                            TextFormField(
+                              validator: (value) {
+                                if ( _phoneNumController.text.isEmpty) {
+                                  return "This field can't be empty";
+                                } else {
+                                  return null;
+                                }
+                              },
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                //hintText: "Short Description:",
+                                labelText: 'Phone Number:',
+                                labelStyle:
+                                TextStyle(fontSize: 12, color: Colors.black),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(13)),
+                              ),
 
-                            CommonText(
-                              text: 'Phone Number:',
-                              size: 17,
-                            ),
-                            SizedBox(height: 12),
-                            CommonTextFieldSmall(
+                              // minLines: null,
+                              //maxLines: null,
+                              // If this is null, there is no limit to the number of lines, and the text container will start with enough vertical space for one line and automatically grow to accommodate additional lines as they are entered.
+                              //expands:
+                              //true, // If
                               controller: _phoneNumController,
-                              hintText: '08012345678',
-                            ),
+                            ),//common space
 
                             SizedBox(
                               height: 20,
