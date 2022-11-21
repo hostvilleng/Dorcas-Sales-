@@ -1,3 +1,4 @@
+import 'package:dorcashub/pages/authPages/parentAuth.dart';
 import 'package:dorcashub/screens/AWelcomeScreen.dart';
 import 'package:dorcashub/utils/ADataProvider.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,6 +26,13 @@ PageController pageController;
     progressIndex = 0;
   }
 
+  storeASplashScreenInfo()async{
+    print("Shared pref called");
+    int isViewed = 0;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('AWalkThroughScreen', isViewed);
+    print(prefs.getInt('AWalkThroughScreen'));
+  }
   double containerWidth() {
     return (150 / modal.length) * (progressIndex + 1);
   }
@@ -125,7 +133,7 @@ PageController pageController;
                       if (initialValue < 2) {
                         setState(() => pageController.jumpToPage(initialValue + 1));
                       } else {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => AWelcomeScreen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ParentAuth()));
                       }
                     },
                     child: Icon(Icons.arrow_forward_ios_outlined, color: Colors.white),

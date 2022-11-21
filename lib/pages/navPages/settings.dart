@@ -6,6 +6,8 @@ import 'package:dorcashub/pages/otherPages/settings/personal.dart';
 import 'package:ionicons/ionicons.dart';
 
 class SettingsPage extends StatefulWidget {
+
+
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }

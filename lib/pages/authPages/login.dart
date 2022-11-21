@@ -2,6 +2,7 @@ import 'package:dorcashub/general/allExports.dart';
 import 'package:dorcashub/pages/authPages/signpage.dart';
 import 'package:dorcashub/pages/authPages/video_player.dart';
 import 'package:dorcashub/utils/color_utils.dart';
+import 'package:nb_utils/nb_utils.dart';
 import '../../main.dart';
 
 import 'forgetpassword.dart';
@@ -11,9 +12,18 @@ TextEditingController _passwordController = TextEditingController();
 TextEditingController _emailController = TextEditingController();
 bool remeberMeValue = false;
 
+String email = '';
+String password = "";
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
+}
+Future checkLogin()async{
+  if (_emailController.text== email && _passwordController.text == password){
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setString("email", _emailController.text);
+
+  }
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -220,7 +230,7 @@ class _LoginPageState extends State<LoginPage> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => VideoPlayerPage()));
+                                    builder: (context) => MainApp()));
                           } else {
                             if (_passwordController.text.isEmpty ||
                                 _passwordController.text.length < 8) {

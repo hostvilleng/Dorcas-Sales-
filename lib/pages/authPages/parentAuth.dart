@@ -1,31 +1,38 @@
 import 'package:dorcashub/general/allExports.dart';
-import 'package:dorcashub/pages/authPages/video_player.dart';
+//import 'package:dorcashub/pages/authPages/video_player.dart';
+import 'package:dorcashub/utils/partner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../main.dart';
 
 
 SharedPreferences LocalStorage;
-//TextEditingController _passwordController = TextEditingController();
-//TextEditingController _emailController = TextEditingController();
+
 TextEditingController _patnerNameController = TextEditingController();
-//TextEditingController _businessServerNameController = TextEditingController();
+
 
 //list of host servers
 
-//String _selectedHostName = 'Dorcas Hub';
+String slug ="";
 //List<String> serverNames = ['GT Bank', 'Dorcas Hub','Smart Tech'];
 
 class ParentAuth extends StatefulWidget {
 
   static Future inti() async{
-    //localStorage =await SharedPreferences.getInstance();
+    var localStorage =await SharedPreferences.getInstance();
   }
   @override
   _ParentAuthState createState() => _ParentAuthState();
 }
 
 class _ParentAuthState extends State<ParentAuth> {
+  @override
+  void initState(){
+    super.initState();
+
+    //slug = UserSimplePreference.getPartner() ?? '';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -182,61 +189,49 @@ class _ParentAuthState extends State<ParentAuth> {
                             onTap: () async {
                               showDialog(context: context,
                                 builder: (context){
-                                  return Center(child: CircularProgressIndicator());
+                                  return Center(child: CircularProgressIndicator(
+
+
+                                  ));
                                 },
                               );
 
-                              if (_patnerNameController.text.isNotEmpty) {
+                              if (_patnerNameController.text.isNotEmpty ||
+                                  _patnerNameController.text == slug ) {
                                 dynamic createHubData = await ApiRequests()
                                     .createHub(
                                     slug:_patnerNameController.text,);
 
-
-                                //getting the date that access token expires and saving it has a microSecondSinceEpoch int
-
-                                int accessTokenExpiresMicroSecsToEpoch =
-                                    DateTime.now()
-                                        .add(Duration(
-                                        seconds:
-                                        createHubData["expires_in"]))
-                                        .microsecondsSinceEpoch;
-
-                                authBox.put('accessTokenExpiresIn',
-                                    accessTokenExpiresMicroSecsToEpoch);
-                                authBox.put('accessToken',
-                                    createHubData["access_token"]);
-                                authBox.put('refreshToken',
-                                    createHubData["refresh_token"]);
-
                                 userAccessToken =
                                 createHubData["access_token"];
 
-                                await getDataOnAppStart(); //IMPORTANT
+                                //await getDataOnAppStart(); //IMPORTANT
 
-                                showSnackLong(context, 'Logged In', false);
+                                showSnackLong(context, 'Partner Id found', false);
 
                                 Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => VideoPlayerPage()));
-                              }
-                              //else {
-                                //if (_passwordController.text.isEmpty ||
-                                  //  _passwordController.text.length < 8) {
-                                 // showSnackLong(
-                                     // context,
-                                     // 'The password needs to be at least 8 characters long',
-                                   //   true);
-                              //  }
-                                //else {
-                                 // showSnackLong(
-                                   //   context,
-                                    //  'Please fill all forms correctly',
-                                   //   true);
-                               // }
-                               // Navigator.of(context).pop();
+                                        builder: (context) => LoginPage()));
 
-                            //  }
+                              }
+                              else {
+                                if (_patnerNameController.text.isEmpty) {
+                                  showSnackLong(
+                                      context,
+                                      'Please Enter Your Partner ID',
+                                      true);
+                                }
+                                else {
+                                  showSnackLong(
+                                      context,
+                                      'Partner ID is Not Found',
+                                      true);
+                                }
+                                //Navigator.of(context).pop();
+
+
+                              }
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -247,7 +242,7 @@ class _ParentAuthState extends State<ParentAuth> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 40, vertical: 20),
                                 child: Text(
-                                   'Login', style: TextStyle(
+                                   'Check', style: TextStyle(
                                   fontSize: 17,
                                   color: Colors.white,
                                 ),
@@ -259,35 +254,6 @@ class _ParentAuthState extends State<ParentAuth> {
 
                       SizedBox(height: 8),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Don't have any account ?",
-                            style: TextStyle(
-                              fontSize: 13,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegisterPage()));
-
-                            },
-                            child: Align(
-                                alignment: Alignment.center,
-                                child: CommonText(
-                                  text: 'Register',
-                                  color: AppColors().mainColor,
-                                  size: 15,
-                                )),
-                          ),
-
-                        ],
-                      ),
 
                       SizedBox(
                         height: 15,
